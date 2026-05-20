@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PJATK_APBD_Cw4_s30734.Models;
 
-[Table("ComponentsTypes")]
+[Table("ComponentTypes")]
 public class ComponentTypes
 {
     [Key]

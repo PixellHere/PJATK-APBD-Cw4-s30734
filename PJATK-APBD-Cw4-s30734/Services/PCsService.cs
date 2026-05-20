@@ -7,7 +7,7 @@ namespace PJATK_APBD_Cw4_s30734.Services;
 
 public class PCsService(DatabaseContext ctx) : IPCsService
 {
-    public async Task<IEnumerable<GetAllPCsResponseDTO>> getAllPcs(CancellationToken cancellationToken)
+    public async Task<IEnumerable<GetAllPCsResponseDTO>> GetAllPcs(CancellationToken cancellationToken)
     {
         return await ctx.PCs.Select(pc => new GetAllPCsResponseDTO(
             pc.Id,
@@ -17,9 +17,9 @@ public class PCsService(DatabaseContext ctx) : IPCsService
             pc.CreatedAt,
             pc.Stock
         )).ToListAsync(cancellationToken);
-}
+    }
 
-    public async Task<PCsComponentsResponseDTO?> getPCWithComponents(int id, CancellationToken cancellationToken)
+    public async Task<PCsComponentsResponseDTO?> GetPCWithComponents(int id, CancellationToken cancellationToken)
     {
         return await ctx.PCs.Where(pc => pc.Id == id).Select(pc => new PCsComponentsResponseDTO(
             pc.Id,
@@ -45,7 +45,7 @@ public class PCsService(DatabaseContext ctx) : IPCsService
                         components.Component.ComponentType.Name)))))).FirstOrDefaultAsync(cancellationToken);
     }
 
-    public async Task<PCResponseDTO> addPC(AddPCsRequestDTO pcRequestDto, CancellationToken cancellationToken)
+    public async Task<PCResponseDTO> AddPC(AddPCsRequestDTO pcRequestDto, CancellationToken cancellationToken)
     {
         PCs newPC = new PCs
         {
@@ -67,7 +67,7 @@ public class PCsService(DatabaseContext ctx) : IPCsService
             newPC.Stock);
     }
 
-    public async Task<PCResponseDTO> updatePC(int id, UpdatePCsRequestDTO updatePcRequestDto, CancellationToken cancellationToken)
+    public async Task<PCResponseDTO?> UpdatePC(int id, UpdatePCsRequestDTO updatePcRequestDto, CancellationToken cancellationToken)
     {
         PCs? updatedPC = await ctx.PCs.Where(pc => pc.Id == id).FirstOrDefaultAsync(cancellationToken);
         if (updatedPC == null)
@@ -90,7 +90,7 @@ public class PCsService(DatabaseContext ctx) : IPCsService
             updatedPC.Stock);
     }
 
-    public async Task<bool> deletePC(int id, CancellationToken cancellationToken)
+    public async Task<bool> DeletePC(int id, CancellationToken cancellationToken)
     {
         int deletedRows = await ctx.PCs.Where(pc => pc.Id == id).ExecuteDeleteAsync(cancellationToken);
         return deletedRows > 0;

@@ -46,6 +46,43 @@ namespace PJATK_APBD_Cw4_s30734.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ComponentManufacturers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Abbreviation = "INT",
+                            FoundationDate = new DateOnly(1968, 7, 18),
+                            FullName = "Intel Corporation"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abbreviation = "AMD",
+                            FoundationDate = new DateOnly(1969, 5, 1),
+                            FullName = "Advanced Micro Devices"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abbreviation = "NVDA",
+                            FoundationDate = new DateOnly(1993, 4, 5),
+                            FullName = "Nvidia Corporation"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Abbreviation = "ASUS",
+                            FoundationDate = new DateOnly(1989, 4, 2),
+                            FullName = "ASUSTeK Computer Inc."
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Abbreviation = "MSI",
+                            FoundationDate = new DateOnly(1986, 8, 4),
+                            FullName = "Micro-Star International"
+                        });
                 });
 
             modelBuilder.Entity("PJATK_APBD_Cw4_s30734.Models.ComponentTypes", b =>
@@ -69,6 +106,38 @@ namespace PJATK_APBD_Cw4_s30734.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ComponentsTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Abbreviation = "CPU",
+                            Name = "Central Processing Unit"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abbreviation = "GPU",
+                            Name = "Graphics Processing Unit"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abbreviation = "MB",
+                            Name = "Motherboard"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Abbreviation = "RAM",
+                            Name = "Random Access Memory"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Abbreviation = "PSU",
+                            Name = "Power Supply Unit"
+                        });
                 });
 
             modelBuilder.Entity("PJATK_APBD_Cw4_s30734.Models.Components", b =>
@@ -98,6 +167,48 @@ namespace PJATK_APBD_Cw4_s30734.Migrations
                     b.HasIndex("ComponentTypesId");
 
                     b.ToTable("Components");
+
+                    b.HasData(
+                        new
+                        {
+                            Code = "COMP-00001",
+                            ComponentManufacturersId = 1,
+                            ComponentTypesId = 1,
+                            Description = "High-end CPU",
+                            Name = "Intel Core i9-13900K"
+                        },
+                        new
+                        {
+                            Code = "COMP-00002",
+                            ComponentManufacturersId = 2,
+                            ComponentTypesId = 1,
+                            Description = "High-end CPU",
+                            Name = "AMD Ryzen 9 7950X"
+                        },
+                        new
+                        {
+                            Code = "COMP-00003",
+                            ComponentManufacturersId = 3,
+                            ComponentTypesId = 2,
+                            Description = "High-end GPU",
+                            Name = "Nvidia RTX 4090"
+                        },
+                        new
+                        {
+                            Code = "COMP-00004",
+                            ComponentManufacturersId = 4,
+                            ComponentTypesId = 3,
+                            Description = "High-end Motherboard",
+                            Name = "ASUS ROG MAXIMUS Z790 HERO"
+                        },
+                        new
+                        {
+                            Code = "COMP-00005",
+                            ComponentManufacturersId = 5,
+                            ComponentTypesId = 3,
+                            Description = "Mid-range Motherboard",
+                            Name = "MSI MPG B650 CARBON"
+                        });
                 });
 
             modelBuilder.Entity("PJATK_APBD_Cw4_s30734.Models.PCComponents", b =>
@@ -116,6 +227,38 @@ namespace PJATK_APBD_Cw4_s30734.Migrations
                     b.HasIndex("ComponentCode");
 
                     b.ToTable("PCComponents");
+
+                    b.HasData(
+                        new
+                        {
+                            PCId = 1,
+                            ComponentCode = "COMP-00001",
+                            Amount = 1
+                        },
+                        new
+                        {
+                            PCId = 1,
+                            ComponentCode = "COMP-00003",
+                            Amount = 1
+                        },
+                        new
+                        {
+                            PCId = 2,
+                            ComponentCode = "COMP-00002",
+                            Amount = 1
+                        },
+                        new
+                        {
+                            PCId = 3,
+                            ComponentCode = "COMP-00004",
+                            Amount = 1
+                        },
+                        new
+                        {
+                            PCId = 4,
+                            ComponentCode = "COMP-00005",
+                            Amount = 1
+                        });
                 });
 
             modelBuilder.Entity("PJATK_APBD_Cw4_s30734.Models.PCs", b =>
@@ -146,6 +289,53 @@ namespace PJATK_APBD_Cw4_s30734.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PCs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Gamer Pro X",
+                            Stock = 10,
+                            Warranty = 24,
+                            Weight = 15.5f
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Office Workstation",
+                            Stock = 50,
+                            Warranty = 12,
+                            Weight = 8.2f
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Creator Studio 9000",
+                            Stock = 5,
+                            Warranty = 36,
+                            Weight = 18f
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Budget Gamer",
+                            Stock = 20,
+                            Warranty = 24,
+                            Weight = 12.1f
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedAt = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Home Media PC",
+                            Stock = 15,
+                            Warranty = 12,
+                            Weight = 10f
+                        });
                 });
 
             modelBuilder.Entity("PJATK_APBD_Cw4_s30734.Models.Components", b =>
