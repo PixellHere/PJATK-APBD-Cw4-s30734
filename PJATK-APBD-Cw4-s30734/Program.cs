@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PJATK_APBD_Cw4_s30734.Infrastructre;
+using PJATK_APBD_Cw4_s30734.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<DatabaseContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
+
+builder.Services.AddScoped<IPCsService, PCsService>();
 
 var app = builder.Build();
 

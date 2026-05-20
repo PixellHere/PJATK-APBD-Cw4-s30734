@@ -1,6 +1,6 @@
 namespace PJATK_APBD_Cw4_s30734.DTOs;
 
-public record GetAllPCsResponse(
+public record GetAllPCsResponseDTO(
     int Id,
     string Name,
     float Weight,

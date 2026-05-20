@@ -15,5 +15,6 @@ public class ComponentTypes
     [MaxLength(150)]
     public string Name { get; set; } = string.Empty;
     
+    
     public IEnumerable<Components>  Components { get; set; } = [];
 }

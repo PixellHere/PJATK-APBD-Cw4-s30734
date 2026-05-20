@@ -18,5 +18,6 @@ public class ComponentManufacturers
     [Column(TypeName = "date")]
     public DateOnly FoundationDate { get; set; }
     
+    
     public IEnumerable<Components>  Components { get; set; } = [];
 }
